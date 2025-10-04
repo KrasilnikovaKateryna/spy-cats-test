@@ -8,9 +8,7 @@ A lightweight Django + DRF service for managing **spy cats**, their **missions**
 
 - **Python** ≥ 3.11  
 - **pip / venv** (recommended)  
-- **SQLite** (default) or **PostgreSQL/MySQL** if you configure it
-
-> If you run Postgres: set `DATABASE_URL` (e.g., via `dj-database-url`) or configure `DATABASES` in `settings.py`.
+- **PostgreSQL**
 
 ---
 
