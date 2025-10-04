@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from missions.models import Mission, Target, Note
+
+admin.site.register(Mission)
+admin.site.register(Target)
+admin.site.register(Note)

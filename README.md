@@ -14,18 +14,10 @@ A lightweight Django + DRF service for managing **spy cats**, their **missions**
 
 ---
 
-## Quick Start (local)
+## Quick Start (Docker)
 
 ```bash
-python -m venv .venv
-. .venv/Scripts/activate
-# source .venv/bin/activate  # macOS/Linux
-
-pip install -r requirements.txt
-
-python manage.py migrate
-
-python manage.py runserver
+docker compose up --build
 ```
 
 Now open:
