@@ -105,6 +105,29 @@ Routes:
 
 ---
 
+## Rate limiting
+
+The API uses Django REST Framework throttling:
+
+- **Authenticated users**: `240 requests/min`
+- **Anonymous clients (by IP)**: `120 requests/min`
+
+Config (in `settings.py`):
+```python
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.UserRateThrottle",
+        "rest_framework.throttling.AnonRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "user": "240/min",
+        "anon": "120/min",
+    },
+}
+```
+
+---
+
 ## Main Endpoints (typical routes)
 
 > Adjust paths if your `urls.py` differs. Below reflects the common setup in this project.

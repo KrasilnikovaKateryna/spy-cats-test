@@ -140,6 +140,14 @@ REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": [
         "rest_framework.filters.OrderingFilter",
     ],
+    "DEFAULT_THROTTLE_CLASSES": [
+        "rest_framework.throttling.UserRateThrottle",
+        "rest_framework.throttling.AnonRateThrottle",
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "user": "240/min",
+        "anon": "120/min",
+    }
 }
 
 SPECTACULAR_SETTINGS = {
