@@ -1,0 +1,33 @@
+services:
+  web:
+    build: .
+    container_name: spycats-web
+    env_file:
+      - .env
+    environment:
+      DJANGO_SETTINGS_MODULE: spyCatsTest.settings
+      DATABASE_URL: ${DATABASE_URL:-postgres://spycats:spycats@db:5432/spycats}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS:-127.0.0.1,localhost}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    container_name: spycats-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-spycats}
+      POSTGRES_USER: ${POSTGRES_USER:-spycats}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-spycats}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-spycats} -d ${POSTGRES_DB:-spycats}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  pgdata:
