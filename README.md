@@ -168,8 +168,8 @@ REST_FRAMEWORK = {
   *(forbidden if the cat already has an active mission)*  
 - `PATCH /missions/targets/{target_id}/` — update a target (e.g., mark completed: `{"completed": true}`)  
   *(forbidden if mission isn’t assigned to a cat)*  
-- `POST  /missions/targets/{target_id}/note/` — create note for a target  
-- `PATCH /missions/targets/{target_id}/note/` — update note
+- `POST  /missions/targets/{target_id}/note/create/` — create note for a target  
+- `PATCH /missions/targets/{target_id}/note/update/` — update note
 
 ### Missions / Targets / Notes
 You can use this collection in Postman to try all endpoints:
